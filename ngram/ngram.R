@@ -31,13 +31,13 @@ reduce <- function(word, counts) {
   keyval(word, sum(counts))
 }
 
-wordcount <- function (input, output=NULL) {
+ngram <- function (input, output=NULL) {
   mapreduce(input=input, output=output, input.format="text",
             map=map, reduce=reduce)
 }
 
 ## Submit job
-out <- wordcount(hdfs.data, hdfs.out)
+out <- ngram(hdfs.data, hdfs.out)
 
 ## Fetch results from HDFS
 results <- from.dfs(out)
